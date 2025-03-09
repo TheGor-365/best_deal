@@ -1,0 +1,29 @@
+<% if products.present? %>
+  <%= line_chart products.map { |product| [product.marketplace, product.price] }, title: "Цены товаров" %>
+  <%= column_chart [{ name: "Мин. цена", data: { "Товар": products.minimum(:price) } }, { name: "Выбранный товар", data: { "Товар": products.first.price } }, { name: "Макс. цена", data: { "Товар": products.maximum(:price) } }], title: "Сравнение цен" %>
+
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Название</th>
+        <th>Описание</th>
+        <th>Характеристики</th>
+        <th>Маркетплейс</th>
+        <th>Цена</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% products.each do |product| %>
+        <tr>
+          <td><%= product.name %></td>
+          <td><%= product.description %></td>
+          <td><%= product.characteristics %></td>
+          <td><%= product.marketplace %></td>
+          <td><%= product.price %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>Нет статистики.</p>
+<% end %>

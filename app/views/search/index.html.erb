@@ -1,2 +1,22 @@
-<h1>Search#index</h1>
-<p>Find me in app/views/search/index.html.erb</p>
+<h1>Поиск товаров на Яндекс.Маркете, Ozon и Wildberries</h1>
+<%= search_form_for @q, url: search_results_path, method: :get, class: 'mb-3' do |f| %>
+  <div class="input-group mb-3">
+    <%= f.text_field :query, class: 'form-control', placeholder: 'Введите название товара' %>
+    <%= f.submit 'Поиск', class: 'btn btn-primary' %>
+  </div>
+
+  <div class="form-check">
+    <%= check_box_tag 'marketplaces[]', 'yandex_market', true, class: 'form-check-input' %>
+    <%= label_tag 'yandex_market', 'Яндекс.Маркет', class: 'form-check-label' %>
+  </div>
+
+  <div class="form-check">
+    <%= check_box_tag 'marketplaces[]', 'ozon', true, class: 'form-check-input' %>
+    <%= label_tag 'ozon', 'Ozon', class: 'form-check-label' %>
+  </div>
+
+  <div class="form-check">
+    <%= check_box_tag 'marketplaces[]', 'wildberries', true, class: 'form-check-input' %>
+    <%= label_tag 'wildberries', 'Wildberries', class: 'form-check-label' %>
+  </div>
+<% end %>
