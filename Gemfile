@@ -15,7 +15,7 @@ gem "bootsnap", require: false
 gem "image_processing", "~> 1.2"
 gem 'nokogiri'
 gem 'httparty'
-gem 'bootstrap', '~> 5.3', '>= 5.3.2'
+gem 'bootstrap', '~> 5.3'
 gem 'ransack'
 gem 'chartkick'
 gem 'ahoy_matey'
